@@ -1,3 +1,4 @@
+import { swagger } from "@elysiajs/swagger";
 import { Elysia, t } from "elysia";
 
 const userSchema = t.Object({
@@ -6,6 +7,7 @@ const userSchema = t.Object({
 });
 
 const app = new Elysia()
+  .use(swagger())
   .get("/", () => "Hello Elysia")
   .get(
     "/user/:id",
