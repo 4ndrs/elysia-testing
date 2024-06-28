@@ -20,19 +20,20 @@ const app = new Elysia()
   )
   .post(
     "/user",
-    ({ body }) => {
+    ({ body, set }) => {
       const user = { id: 1, ...body };
 
       console.log("created user:", user);
 
-      return new Response(
-        JSON.stringify({ message: "User created", data: user }),
-        {
-          status: 201,
-        },
-      );
+      set.status = "Created";
+      set.headers["x-powered-by"] = "Elysia";
+
+      return { message: "User created", data: user };
     },
-    { body: userSchema },
+    {
+      body: userSchema,
+      response: { 201: t.Object({ message: t.String(), data: userSchema }) },
+    },
   )
   .listen(3000);
 
