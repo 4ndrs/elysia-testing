@@ -5,14 +5,22 @@
     "dev": "bun --watch src/index.ts",
     "build": "bun build src/index.ts",
     "start": "NODE_ENV=production bun src/index.ts",
-    "test": "bun test"
+    "test": "bun test",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "db:migrate": "drizzle-kit migrate",
+    "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
     "@elysiajs/swagger": "^1.0.5",
+    "drizzle-orm": "^0.31.2",
+    "drizzle-typebox": "^0.1.1",
     "elysia": "latest"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "better-sqlite3": "^11.1.1",
+    "bun-types": "latest",
+    "drizzle-kit": "^0.22.8"
   },
   "module": "src/index.js"
 }
